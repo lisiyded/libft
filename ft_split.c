@@ -6,7 +6,7 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 16:07:03 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 16:08:23 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**ft_freememory(char **tab, size_t len)
 {
-	size_t		count;
+	size_t	count;
 
 	count = 0;
 	while (count <= len)
@@ -28,7 +28,7 @@ static char	**ft_freememory(char **tab, size_t len)
 
 static size_t	ft_words(char const *s, char c)
 {
-	int			count;
+	int	count;
 
 	count = 0;
 	while (*s)
@@ -42,8 +42,8 @@ static size_t	ft_words(char const *s, char c)
 
 static char	*ft_strndup(const char *s1, size_t n)
 {
-	char		*str_copy;
-	size_t		i;
+	char	*str_copy;
+	size_t	i;
 
 	str_copy = (char *)malloc((n + 1) * sizeof(char));
 	if (!str_copy)
