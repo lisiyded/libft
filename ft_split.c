@@ -6,7 +6,7 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 16:04:53 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 16:07:03 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static char	*ft_strndup(const char *s1, size_t n)
 
 static char	**ft_sizetab(char **tab, char const *s, char c)
 {
-	size_t		i;
-	size_t		index;
-	size_t		w;
+	size_t	i;
+	size_t	index;
+	size_t	w;
 
 	i = 0;
 	w = 0;
