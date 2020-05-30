@@ -6,13 +6,13 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 12:57:46 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 13:43:58 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	**ft_freememory(char **tab, size_t len)
+static char	**ft_freememory(char **tab, size_t len)
 {
 	size_t count;
 
@@ -40,12 +40,12 @@ static size_t	ft_words(char const *s, char c)
 	return (count);
 }
 
-static	char	*ft_strndup(const char *s1, size_t n)
+static char	*ft_strndup(const char *s1, size_t n)
 {
 	char		*str_copy;
 	size_t		i;
 
-	str_copy = malloc(sizeof(*str_copy) * (n + 1));
+	str_copy = (char *)malloc((n + 1) * sizeof(char));
 	if (!str_copy)
 		return (NULL);
 	i = 0;
@@ -58,7 +58,7 @@ static	char	*ft_strndup(const char *s1, size_t n)
 	return (str_copy);
 }
 
-static	char	**sizetab(char **tab, char const *s, char c)
+static char	**sizetab(char **tab, char const *s, char c)
 {
 	size_t	i;
 	size_t	index;
@@ -81,12 +81,12 @@ static	char	**sizetab(char **tab, char const *s, char c)
 			w++;
 		}
 	}
-	return (tab);
 	tab[w] = NULL;
+	return (tab);
 }
-char			**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
-	char		**newstr;
+	char	**newstr;
 
 	if (!(s))
 		return (NULL);
