@@ -6,13 +6,27 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/26 18:03:22 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 12:57:46 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count(char const *s, char c)
+static	char	**ft_freememory(char **tab, size_t len)
+{
+	size_t count;
+
+	count = 0;
+	while (count <= len)
+	{
+		free(tab[count]);
+		count++;
+	}
+	free(tab);
+	return (NULL);
+}
+
+static size_t	ft_words(char const *s, char c)
 {
 	int count;
 
@@ -26,43 +40,57 @@ static int		ft_count(char const *s, char c)
 	return (count);
 }
 
-static int		ft_length(char const *str, char c)
+static	char	*ft_strndup(const char *s1, size_t n)
 {
-	int n;
+	char		*str_copy;
+	size_t		i;
 
-	n = 0;
-	if (!str)
-		return (0);
-	while (str[n] != c && str[n])
-		n++;
-	return (n);
-}
-
-char			**ft_split(char const *s, char c)
-{
-	int		i;
-	int		j;
-	int		words;
-	char	**new;
-
-	i = 0;
-	if (!s || !c)
-		return (0);
-	words = ft_count(s, c);
-	new = (char **)malloc(sizeof(char *) * (words + 1));
-	if (new == NULL)
+	str_copy = malloc(sizeof(*str_copy) * (n + 1));
+	if (!str_copy)
 		return (NULL);
-	while (i < words)
+	i = 0;
+	while (s1[i] != '\0' && i < n)
 	{
-		while (*s == c && *s)
-			s++;
-		new[i] = (char *)malloc(sizeof(char) * (ft_length(s, c) + 1));
-		j = 0;
-		while (*s != c && *s)
-			new[i][j++] = *s++;
-		new[i][j] = '\0';
+		str_copy[i] = s1[i];
 		i++;
 	}
-	new[i] = 0;
-	return (new);
+	str_copy[i] = '\0';
+	return (str_copy);
+}
+
+static	char	**sizetab(char **tab, char const *s, char c)
+{
+	size_t	i;
+	size_t	index;
+	size_t	w;
+
+	i = 0;
+	w = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		index = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		if (index < i)
+		{
+			tab[w] = ft_strndup(s + index, i - index);
+			if (tab == NULL)
+				ft_freememory(tab, w);
+			w++;
+		}
+	}
+	return (tab);
+	tab[w] = NULL;
+}
+char			**ft_split(char const *s, char c)
+{
+	char		**newstr;
+
+	if (!(s))
+		return (NULL);
+	if (!(newstr = (char **)malloc((ft_words(s, c) + 1) * sizeof(char *))))
+		return (NULL);
+	return (sizetab(newstr, s, c));
 }
