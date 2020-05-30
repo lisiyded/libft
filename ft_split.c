@@ -6,7 +6,7 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 13:43:58 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 14:03:56 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	**sizetab(char **tab, char const *s, char c)
 		if (index < i)
 		{
 			tab[w] = ft_strndup(s + index, i - index);
-			if (tab == NULL)
+			if (tab[w] == NULL)
 				ft_freememory(tab, w);
 			w++;
 		}
