@@ -6,7 +6,7 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 01:24:46 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 14:42:15 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 14:47:37 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (s[start] != '\0' && i < len)
 	{
-		string[i] = s[start];
+		str[i] = s[start];
 		start++;
 		i++;
 	}
