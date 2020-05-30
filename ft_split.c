@@ -6,15 +6,15 @@
 /*   By: spowers <spowers@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 02:35:22 by spowers           #+#    #+#             */
-/*   Updated: 2020/05/30 14:18:53 by spowers          ###   ########.fr       */
+/*   Updated: 2020/05/30 15:50:20 by spowers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_freememory(char **tab, size_t len)
+static	char	**ft_freememory(char **tab, size_t len)
 {
-	size_t count;
+	size_t		count;
 
 	count = 0;
 	while (count <= len)
@@ -26,9 +26,9 @@ static char	**ft_freememory(char **tab, size_t len)
 	return (NULL);
 }
 
-static size_t	ft_words(char const *s, char c)
+static	size_t	ft_words(char const *s, char c)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*s)
@@ -40,7 +40,7 @@ static size_t	ft_words(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_strndup(const char *s1, size_t n)
+static	char		*ft_strndup(const char *s1, size_t n)
 {
 	char		*str_copy;
 	size_t		i;
@@ -58,11 +58,11 @@ static char	*ft_strndup(const char *s1, size_t n)
 	return (str_copy);
 }
 
-static char	**sizetab(char **tab, char const *s, char c)
+static	char		**ft_sizetab(char **tab, char const *s, char c)
 {
-	size_t	i;
-	size_t	index;
-	size_t	w;
+	size_t		i;
+	size_t		index;
+	size_t		w;
 
 	i = 0;
 	w = 0;
@@ -77,11 +77,8 @@ static char	**sizetab(char **tab, char const *s, char c)
 		{
 			tab[w] = ft_strndup(s + index, i - index);
 			if (tab[w] == NULL)
-			{
-				ft_freememory(tab, w);
-				return (NULL);
-			}
-		w++;
+				return (ft_freememory(tab, w));
+			w++;
 		}
 	}
 	tab[w] = NULL;
@@ -95,5 +92,5 @@ char		**ft_split(char const *s, char c)
 		return (NULL);
 	if (!(newstr = (char **)malloc((ft_words(s, c) + 1) * sizeof(char *))))
 		return (NULL);
-	return (sizetab(newstr, s, c));
+	return (ft_sizetab(newstr, s, c));
 }
